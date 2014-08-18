@@ -55,14 +55,14 @@
     // Your code here
     var BUSY_FUZZ = 5;
 
-    var Dudes = React.createClass({
+    var Friends = React.createClass({
       render : function () {
-        var dudes = new Array(this.props.size);
+        var friends = new Array(this.props.size);
         for (var i = 0; i < this.props.size; i += 1) {
-          dudes.push(<span key={i} className='glyphicon glyphicon-user pull-right'></span>);
+          friends.push(<span key={i} className='glyphicon glyphicon-user pull-right'></span>);
         }
         return (
-          <span className="dudes">{dudes}</span>
+          <span className="friends">{friends}</span>
         );
       }
     });
@@ -143,7 +143,7 @@
               <div>{freebusy.text}</div>
               <div>{freebusy.when}</div>
               <div className="attrs">
-                <Dudes size={this.props.room.size} />
+                <Friends size={this.props.room.size} />
                 <span className={(this.props.room.vidyo) ? 'pull-left glyphicon glyphicon-facetime-video' : ''} ></span>
               </div>
             </div>
