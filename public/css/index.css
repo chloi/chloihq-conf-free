@@ -1,10 +1,5 @@
 @import url("bootstrap.min.css");
 
-@font-face {
-  font-family: "Clear Sans";
-  src: url("../fonts/ClearSans-Regular.ttf");
-}
-
 /* for small screens drop the sizes and margins */
 @media (max-width: 768px) {
   h2 {
@@ -30,7 +25,7 @@
 }
 
 body {
-  font-family: "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", "AvenirNext-SemiBold", "Trebuchet MS", Helvetica, Arial, sans-serif;;
   color: #fff;
   background-color: #2F3A47;
 }
