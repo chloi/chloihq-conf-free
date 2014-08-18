@@ -22,14 +22,13 @@
 
   <div class="container-fluid">
 
-    <h2 class="pull-left" id="time"></h2>
-    <h2 class="pull-right" id="date"></h2>
+    <h1 class="text-center"><%= title %></h1>
+    <h2 class="pull-left"><time id="time"></time></h2>
+    <h2 class="pull-right"><time id="date"></time></h2>
 
     <div class="clearfix"></div>
 
     <div id="content"></div>
-
-    <h2 class="text-center"><%= title %></h2>
 
     <div id="overlay">
       <button id="fullscreen">Fullscreen (f)</button>
@@ -176,17 +175,20 @@
         return (
           <div className="row">
             <div className="col-md-2">
-              <Room room={findRoom("2a")} />
-              <Room room={findRoom("2b")} />
-              <Room room={findRoom("2c")} />
-            </div>
-            <div className="col-md-2">
-            </div>
-            <div className="col-md-2">
               <Room room={findRoom("2d")} />
             </div>
-            <div className="col-md-2">
+            <div className="col-md-3">
               <Room room={findRoom("2e")} />
+            </div>
+            <div className="col-md-3">
+              <Room room={findRoom("2a")} />
+              <div class="col-md-6">
+                <Room room={findRoom("2b")} />
+              </div>
+            </div>
+            <div class="row">
+            <div className="col-md-2">
+              <Room room={findRoom("2c")} />
             </div>
           </div>
         );

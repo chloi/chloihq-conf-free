@@ -2,7 +2,7 @@
 
 /* for small screens drop the sizes and margins */
 @media (max-width: 768px) {
-  h2 {
+  h1, h2 {
     margin: 16px 0;
     font-size: smaller;
   }
