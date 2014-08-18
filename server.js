@@ -45,10 +45,10 @@ moment.lang('en', {
 var ics = "https://www.google.com/calendar/ical/%s/public/basic.ics?fmt=ifb&date=%s";
 
 // room names and ids for all the Mozilla YVR conference rooms
-var rooms = [ { name : "Breakout", id : "2a", neighborhood : "west", vidyo : false, size : 1 },
-              { name : "Mini Conf", id : "2b", neighborhood : "west", vidyo : false, size : 2 },
-              { name : "Pairing", id : "2c", neighborhood : "west", vidyo : false, size : 1 },
-              { name : "Phone Room", id : "2d", neighborhood : "east", vidyo : false, size : 1 },
+var rooms = [ { name : "Breakout", id : "47c1ujm18e0cov47bga56nksc4", neighborhood : "west", vidyo : false, size : 1 },
+              { name : "Mini Conf", id : "bbgd0aghsl8qah1eecl3qn44js", neighborhood : "west", vidyo : false, size : 2 },
+              { name : "Pairing", id : "0uqvn3kbbqhgltfajgiouj4nb0", neighborhood : "west", vidyo : false, size : 1 },
+              { name : "Phone Room", id : "o2sggbafvejrl71pnjaqkofj2k", neighborhood : "east", vidyo : false, size : 1 },
               { name : "Conference", id : "v59uo85e5qvfo4jqsv4hm125ic", neighborhood : "central", vidyo : true, size : 6 }
             ].map(function(i) { i.freebusy = []; return i;});
 
