@@ -112,19 +112,19 @@ h2 {
 }
 
 .room-busy {
-  background-color: #323232;
+  background-color: #6D6E70; /* Chloi Grey */
 }
 .room-free-soon {
-  background-color: #94A1A0 !important;
+  background-color: #01A687 !important; /* Chloi Teal */
 }
 .room-busy-soon {
-  background-color: #EBC300 !important;
+  background-color: #F1EDB5 !important; /* Chloi Beige */
 }
 .room-busy-soon .name {
   color: #333 !important;
 }
 .room-free {
-  background-color: #27B648;
+  background-color: #90C741; /* Chloi Green */
 }
 
 .room .fb {
