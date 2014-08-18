@@ -22,14 +22,16 @@
 
   <div class="container-fluid">
 
-    <h1 class="text-center"><%= title %></h1>
-    <h2 class="pull-left"><time id="time"></time></h2>
-    <h2 class="pull-right"><time id="date"></time></h2>
-
-    <div class="clearfix"></div>
-
+    <!-- <h1 class="text-center"><%= title %></h1> -->
+    <div class="row">
+      <span class="pull-left h2">
+      <time id="time"></time><br/>
+      <time id="date"></time>
+      </span>
+    </div>
+    <div class="row">
     <div id="content"></div>
-
+    </div>
     <div id="overlay">
       <button id="fullscreen">Fullscreen (f)</button>
       <script type="text/javascript">
@@ -43,6 +45,14 @@
         });
       </script>
     </div>
+    <div class="row">
+      <div class="hidden-xs col-sm-2 col-lg-1">
+        <img src="images/wordmark.svg" alt="" />
+      </div>
+    </div>
+
+
+
 
   </div>
 
@@ -187,8 +197,9 @@
               </div>
             </div>
             <div class="row">
-            <div className="col-md-2">
-              <Room room={findRoom("2c")} />
+              <div className="col-md-2">
+                <Room room={findRoom("2c")} />
+              </div>
             </div>
           </div>
         );
