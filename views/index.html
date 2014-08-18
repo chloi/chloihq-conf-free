@@ -124,6 +124,7 @@
         // Terrible hack :(
         // The random 20 value is equal to the px of margin between the small boxes
         var height = (this.props.room.size > 2) ? ($(window).height() + 20) : ($(window).height());
+
         // Here we just grab the padding we are aware of and adjust for it
         var padding = $("body").innerHeight() - $("body").height();
         height -= (padding * 2) + $("h2").height() * 2.2;
@@ -177,21 +178,15 @@
             <div className="col-md-2">
               <Room room={findRoom("2a")} />
               <Room room={findRoom("2b")} />
-            </div>
-            <div className="col-md-2">
               <Room room={findRoom("2c")} />
-              <Room room={findRoom("2e")} />
             </div>
             <div className="col-md-2">
-              <Room room={findRoom("commons")} />
             </div>
             <div className="col-md-2">
               <Room room={findRoom("2d")} />
-              <Room room={findRoom("2f")} />
             </div>
             <div className="col-md-2">
-              <Room room={findRoom("2g")} />
-              <Room room={findRoom("2h")} />
+              <Room room={findRoom("2e")} />
             </div>
           </div>
         );
