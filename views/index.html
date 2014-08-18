@@ -135,7 +135,7 @@
         var height = (this.props.room.size > 2) ? ($(window).height() + 20) : ($(window).height());
 
         // Here we just grab the padding we are aware of and adjust for it
-        var padding = $("body").innerHeight() - $("body").height();
+        var padding = $("body").innerHeight() - $("body").height() + 70; // 50px is set on the body
         height -= (padding * 2) + $("h2").height() * 2.2;
         // For the large room we wanted to make it take the whole height
         // All other rooms want only half the height
@@ -188,18 +188,14 @@
               <Room room={findRoom("o2sggbafvejrl71pnjaqkofj2k")} />
             </div>
             <div className="col-md-3">
+              <Room room={findRoom("v59uo85e5qvfo4jqsv4hm125ic")} />
+            </div>
+            <div className="col-md-2 col-md-offset-1">
               <Room room={findRoom("0uqvn3kbbqhgltfajgiouj4nb0")} />
             </div>
-            <div className="col-md-3">
+            <div className="col-md-2">
+              <Room room={findRoom("bbgd0aghsl8qah1eecl3qn44js")} />
               <Room room={findRoom("47c1ujm18e0cov47bga56nksc4")} />
-              <div class="col-md-6">
-                <Room room={findRoom("bbgd0aghsl8qah1eecl3qn44js")} />
-              </div>
-            </div>
-            <div class="row">
-              <div className="col-md-2">
-                <Room room={findRoom("v59uo85e5qvfo4jqsv4hm125ic")} />
-              </div>
             </div>
           </div>
         );
