@@ -44,16 +44,11 @@ moment.lang('en', {
 var ics = "https://mail.mozilla.com/home/%s/Calendar?fmt=ifb&date=%s";
 
 // room names and ids for all the Mozilla YVR conference rooms
-var rooms = [ { name : "Siwash", id : "2a", neighborhood : "west", vidyo : true, size : 2 },
-              { name : "Buntzen", id : "2b", neighborhood : "west", vidyo : false, size : 1 },
-              { name : "Deep Cove", id : "2c", neighborhood : "west", vidyo : true, size : 2 },
-              { name : "Crazy Raven", id : "2e", neighborhood : "west", vidyo : true, size : 2 },
-              { name : "Lighthouse", id : "2d", neighborhood : "east", vidyo : false, size : 1 },
-              { name : "Wreck", id : "2f", neighborhood : "east", vidyo : false, size : 1 },
-              { name : "Dinky Peak", id : "2g", neighborhood : "east", vidyo : false, size : 1 },
-              { name : "Adanac", id : "2h", neighborhood : "east", vidyo : false, size : 1 },
-              // not sure I should be including this one
-              { name : "Whytecliff", id : "commons", neighborhood : "central", vidyo : true, size : 3 }
+var rooms = [ { name : "Breakout", id : "2a", neighborhood : "west", vidyo : false, size : 1 },
+              { name : "Mini Conf", id : "2b", neighborhood : "west", vidyo : false, size : 2 },
+              { name : "Pairing", id : "2c", neighborhood : "west", vidyo : false, size : 1 },
+              { name : "Phone Room", id : "2e", neighborhood : "east", vidyo : false, size : 1 },
+              { name : "Conference", id : "2d", neighborhood : "east", vidyo : true, size : 6 }
             ].map(function(i) { i.freebusy = []; return i;});
 
 // util function to convert a Mozilla room id into a YVR
@@ -161,7 +156,7 @@ app.set('view engine', 'html');
 
 app.get('/', function(req, res){
   res.render('index', {
-    title: "YVR Conference Rooms"
+    title: "ChloiHQ Conference Rooms"
   });
 });
 
