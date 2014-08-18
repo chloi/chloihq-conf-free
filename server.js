@@ -47,14 +47,14 @@ var ics = "https://mail.mozilla.com/home/%s/Calendar?fmt=ifb&date=%s";
 var rooms = [ { name : "Breakout", id : "2a", neighborhood : "west", vidyo : false, size : 1 },
               { name : "Mini Conf", id : "2b", neighborhood : "west", vidyo : false, size : 2 },
               { name : "Pairing", id : "2c", neighborhood : "west", vidyo : false, size : 1 },
-              { name : "Phone Room", id : "2e", neighborhood : "east", vidyo : false, size : 1 },
-              { name : "Conference", id : "2d", neighborhood : "east", vidyo : true, size : 6 }
+              { name : "Phone Room", id : "2d", neighborhood : "east", vidyo : false, size : 1 },
+              { name : "Conference", id : "2e", neighborhood : "central", vidyo : true, size : 6 }
             ].map(function(i) { i.freebusy = []; return i;});
 
 // util function to convert a Mozilla room id into a YVR
 // @mozilla email address.  Means less repeated info and perhaps less spam
 function atMozYVR(id) {
-  return "yvr-" + id + "@mozilla.com";
+  return "yvr-" + id + "@chloi.com";
 }
 
 function getFreeBusy() {
