@@ -41,20 +41,22 @@ moment.lang('en', {
 
 // ICS calendar URL format, first %s requires email, second %s requires date in 20140516 format
 // thanks to this: http://www.zimbra.com/forums/users/16877-only-publish-free-busy-information-icalendar.html#post88423
-var ics = "https://mail.mozilla.com/home/%s/Calendar?fmt=ifb&date=%s";
+//var ics = "https://mail.mozilla.com/home/%s/Calendar?fmt=ifb&date=%s";
+var ics = "https://www.google.com/calendar/ical/%s/public/basic.ics?fmt=ifb&date=%s";
 
 // room names and ids for all the Mozilla YVR conference rooms
 var rooms = [ { name : "Breakout", id : "2a", neighborhood : "west", vidyo : false, size : 1 },
               { name : "Mini Conf", id : "2b", neighborhood : "west", vidyo : false, size : 2 },
               { name : "Pairing", id : "2c", neighborhood : "west", vidyo : false, size : 1 },
               { name : "Phone Room", id : "2d", neighborhood : "east", vidyo : false, size : 1 },
-              { name : "Conference", id : "2e", neighborhood : "central", vidyo : true, size : 6 }
+              { name : "Conference", id : "v59uo85e5qvfo4jqsv4hm125ic", neighborhood : "central", vidyo : true, size : 6 }
             ].map(function(i) { i.freebusy = []; return i;});
 
 // util function to convert a Mozilla room id into a YVR
 // @mozilla email address.  Means less repeated info and perhaps less spam
 function atMozYVR(id) {
-  return "yvr-" + id + "@chloi.com";
+  // return "yvr-" + id + "@chloi.io";
+  return "chloi.io_"+ id + "%40group.calendar.google.com"
 }
 
 function getFreeBusy() {
@@ -65,9 +67,11 @@ function getFreeBusy() {
   rooms.forEach(function (room) {
 
     var url = format(ics, atMozYVR(room.id), now.format("YYYYMMDD"));
+    // var url = format(ics, now.format("YYYYMMDD"));
 
     ical.fromURL(url, {},
       function(err, data) {
+
         if (err) {
           console.error(err);
           return;
@@ -81,8 +85,15 @@ function getFreeBusy() {
 
         for (var k in data){
           if (data.hasOwnProperty(k)){
+            
             var ev = data[k];
-            if (ev.type && ev.type === "VFREEBUSY" && typeof ev.freebusy !== "undefined") {
+            
+            // if (ev.type && ev.type === "VFREEBUSY" && typeof ev.freebusy !== "undefined" ) {
+
+            if (ev.type && ev.type === "VFREEBUSY") {
+              if (typeof ev.freebusy === "undefined") {
+                ev.freebusy = [{"start": ev.start, "end": ev.end}]
+              }
               room.freebusy = ev.freebusy.filter(today);
             } else {
               room.freebusy = [];
