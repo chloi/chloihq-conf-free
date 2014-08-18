@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name=viewport content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="handheldfriendly" content="true">
+  <meta name="mobileoptimized" content="320">
+  <meta http-equiv="cleartype" content="on">
+
   <title><%= title %></title>
 
   <script async defer type="text/javascript" src="//use.typekit.net/fmk6cnx.js" onload="try{Typekit.load();}catch(e){}"></script>
@@ -16,6 +19,7 @@
   <script src="js/JSXTransformer-0.8.0.js"></script>
 
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.css">
 
 </head>
 <body>
@@ -24,10 +28,12 @@
 
     <!-- <h1 class="text-center"><%= title %></h1> -->
     <div class="row">
+
       <span class="pull-left h2">
       <time id="time"></time><br/>
       <time id="date"></time>
       </span>
+
     </div>
     <div class="row">
     <div id="content"></div>
@@ -68,7 +74,7 @@
       render : function () {
         var friends = new Array(this.props.size);
         for (var i = 0; i < this.props.size; i += 1) {
-          friends.push(<span key={i} className='glyphicon glyphicon-user pull-right'></span>);
+          friends.push(<span key={i} className="oi oi-person pull-right" title="person" aria-hidden="true"></span>);
         }
         return (
           <span className="friends">{friends}</span>
@@ -147,14 +153,16 @@
 
         return (
           <div style={divStyle} className={freebusy.classes}>
-            <div className="name">{this.props.room.name}</div>
-            <span className="glyphicon glyphicon-ok"></span>
+            <div className="name">
+              {this.props.room.name}<br/>
+              <span className="oi oi-check" title="check" aria-hidden="true"></span>
+            </div>
             <div className="fb">
               <div>{freebusy.text}</div>
               <div>{freebusy.when}</div>
               <div className="attrs">
                 <Friends size={this.props.room.size} />
-                <span className={(this.props.room.vidyo) ? 'pull-left glyphicon glyphicon-facetime-video' : ''} ></span>
+                <span className={(this.props.room.vidyo) ? 'pull-left oi oi-video' : ''} ></span>
               </div>
             </div>
           </div>

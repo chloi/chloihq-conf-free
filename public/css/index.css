@@ -116,22 +116,29 @@ svg {
 }
 
 .room .name,
-.room .glyphicon-ok {
+.room .oi-check {
   position: relative;
   display: block;
   text-align: center;
-  top: 25%;
+  top: 1em;
 }
 
-.room .glyphicon-ok {
-  font-size: 48px;
+.room .oi-check {
+  font-size: 1em;
+  line-height: 0.25;
 }
 
-.room.room-busy .glyphicon-ok,
-.room.room-busy-soon .glyphicon-ok,
-.room.room-busy-later .glyphicon-ok {
-  display: none;
-}
+/* Super hacky, fix icon classes in React instead! */
+  .room.room-busy .oi-check:before {
+    /* .oi-x */
+    content:'\e0db';
+  }
+  .room.room-busy-soon .oi-check:before,
+  .room.room-busy-later .oi-check:before,
+  .room.room-free-soon .oi-check:before,
+  .room.room-free-later .oi-check:before {
+    content:'\e03b' !important;
+  }
 
 .room.room-neighborhood-central.room-size-3 {
   margin: 0 !important;
@@ -147,20 +154,27 @@ svg {
   height: 532px;
 }
 
+.room-free {
+  font-weight: 700;
+  background-color: #90C741; /* Chloi Green */
+  /*text-shadow: 0 1px 0 darken(#90C741, 10%);*/
+}
 .room-busy {
+  font-weight: 400;
   background-color: #6D6E70; /* Chloi Grey */
 }
-.room-free-soon {
-  background-color: #01A687 !important; /* Chloi Teal */
+.room-free-soon,
+.room-busy-later {
+  font-weight: 700;
+  background-color: #01A687; /* Chloi Teal */
 }
-.room-busy-soon {
-  background-color: #F1EDB5 !important; /* Chloi Beige */
+.room-busy-soon,
+.room-busy-later {
+  font-weight: 400;
+  background-color: #D3D0C7; /* Chloi Beige */
 }
 .room-busy-soon .name {
-  color: #333 !important;
-}
-.room-free {
-  background-color: #90C741; /* Chloi Green */
+  /*color: #333 !important;*/
 }
 
 .room .fb {
