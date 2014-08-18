@@ -48,7 +48,7 @@ if (!Array.prototype.find) {
 
 function setDate() {
     $("#date").text(moment().format('ddd, MMMM Do'));
-    $("#time").text(moment().format('h:mm a'));
+    $("#time").html(moment().format('h:mm') + '<abbr class="caps">' + moment().format('a') + '</abbr>');
 }
 
 $(document).ready(function () {
