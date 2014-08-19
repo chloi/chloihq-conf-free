@@ -32,19 +32,21 @@ http://cl.ly/image/0C0k0x0Q2I2g
 YVR Supported Conference Rooms
 =============
 
-* Siwash : yvr-2a
-* Buntzen : yvr-2b
-* Deep Cove : yvr-2c
-* Lighthouse : yvr-2d
-* Crazy Raven : yvr-2e
-* Wreck : yvr-2f
-* Dinky Peak : yvr-2g
-* Adanac : yvr-2h
-* Whytecliff : yvr-commons
 
-Zimbra ICS Calendar URL Format:
+* Breakout : 47c1ujm18e0cov47bga56nksc4
+* Mini Conf : bbgd0aghsl8qah1eecl3qn44js
+* Pairing : 0uqvn3kbbqhgltfajgiouj4nb0
+* Phone Room : o2sggbafvejrl71pnjaqkofj2k
+* Conference : v59uo85e5qvfo4jqsv4hm125ic
 
-    https://mail.mozilla.com/home/$EMAIL/Calendar?fmt=ifb&date=$DATE
+
+Booking Events
+
+    Breakout: https://www.google.com/calendar/ical/chloi.io_47c1ujm18e0cov47bga56nksc4%40group.calendar.google.com/public/basic.ics
+    Mini Conf: https://www.google.com/calendar/ical/chloi.io_bbgd0aghsl8qah1eecl3qn44js%40group.calendar.google.com/public/basic.ics
+    Pairing: https://www.google.com/calendar/ical/chloi.io_0uqvn3kbbqhgltfajgiouj4nb0%40group.calendar.google.com/public/basic.ics
+    Phone Room: https://www.google.com/calendar/ical/chloi.io_o2sggbafvejrl71pnjaqkofj2k%40group.calendar.google.com/public/basic.ics
+    Conference: https://www.google.com/calendar/ical/chloi.io_v59uo85e5qvfo4jqsv4hm125ic%40group.calendar.google.com/public/basic.ics
 
 Where `$EMAIL` = conf room email AND `$DATE` = moment.format("YYYYMMDD")
 
