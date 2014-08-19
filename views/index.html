@@ -91,8 +91,14 @@
             withInFuzzOfStart = false,
             fbs = this.props.room.freebusy.sort(function (a, b) { return moment(a.end) > moment(b.end); });
 
-        var text = "", when = "";
+        var ne = this.props.room.nextEvent;
+
+        var text = "", when = "", nextEvent = "";
         var fb = fbs.find(function (fb) { return now.isBefore(fb.end); });
+
+        if (ne) {
+          nextEvent = moment(ne).fromNow();
+        }
 
         if (fb) {
           willBeBusy = (now.isBefore(fb.end));
@@ -100,7 +106,6 @@
           moreThanOneHour = (moment(fb.end).diff() > 60 * 60 * 1000),
           withInFuzzOfEnd = (moment(fb.end).diff() < BUSY_FUZZ * 60 * 1000),
           withInFuzzOfStart = (moment(fb.start).diff() < BUSY_FUZZ * 60 * 1000);
-
 
           if (isBusy) {
             text = "free";
@@ -115,6 +120,7 @@
           isBusy = false
         }
 
+
         var cxs = {
           'room' : true,
           'room-vidyo' : this.props.room.vidyo,
@@ -126,7 +132,7 @@
         };
         cxs['room-neighborhood-' + this.props.room.neighborhood] = true;
         cxs['room-size-' + this.props.room.size] = true;
-        return { classes : React.addons.classSet(cxs), text : text, when : when };
+        return { classes : React.addons.classSet(cxs), text : text, when : when, next: nextEvent };
       },
       render : function () {
 
@@ -135,6 +141,8 @@
         }
 
         var freebusy = this.freebusy();
+
+        console.log(freebusy.next)
 
         // Terrible hack :(
         // The random 20 value is equal to the px of margin between the small boxes
@@ -160,6 +168,7 @@
             <div className="fb">
               <div>{freebusy.text}</div>
               <div>{freebusy.when}</div>
+              <div>{freebusy.next}</div>
               <div className="attrs">
                 <Friends size={this.props.room.size} />
                 <span className={(this.props.room.vidyo) ? 'pull-left oi oi-video' : ''} ></span>

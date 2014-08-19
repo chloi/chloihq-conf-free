@@ -59,21 +59,26 @@ function atMozYVR(id) {
 
 // WIP
 function findNextEvent() {
+  var now = moment();
 
   rooms.forEach(function (room) {
     var url = format("https://www.google.com/calendar/ical/%s/public/basic.ics", atMozYVR(room.id));
   
     ical.fromURL(url, {}, function(err, data) {
+      var d = [];
       for (var k in data) {
         if (data.hasOwnProperty(k)) {
           var ev = data[k];
-          console.log("Conference",
-            ev.summary,
-            'is in',
-            ev.location,
-            'on the', ev.start.getDate(), 'of');
+
+          var start = moment.utc(ev.start);
+          start.local();
+          if (now.isBefore(start)) {
+            d.push(start);
+          }
         }
       }
+
+      room.nextEvent = d.sort(function (a, b) { return moment(a.start) > moment(b.start); }).pop();
     });
   });
 }
@@ -130,7 +135,7 @@ function getFreeBusy() {
   now.add('minutes', (CALENDAR_INTERVAL - (now.minutes() % CALENDAR_INTERVAL)));
   console.log("next run", now.fromNow());
 
-  // findNextEvent();
+  findNextEvent();
 
   // run every CALENDAR_INTERVAL min on the CALENDAR_INTERVAL
   // use the diff against the current time for milliseconds
