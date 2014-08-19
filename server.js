@@ -46,17 +46,36 @@ var ics = "https://www.google.com/calendar/ical/%s/public/basic.ics?fmt=ifb&date
 
 // room names and ids for all the Mozilla YVR conference rooms
 var rooms = [ { name : "Breakout", id : "47c1ujm18e0cov47bga56nksc4", neighborhood : "west", vidyo : false, size : 1 },
-              { name : "Mini Conf", id : "bbgd0aghsl8qah1eecl3qn44js", neighborhood : "west", vidyo : false, size : 2 },
+              { name : "Mini Conf", id : "bbgd0aghsl8qah1eecl3qn44js", neighborhood : "west", vidyo : false, size : 2},
               { name : "Pairing", id : "0uqvn3kbbqhgltfajgiouj4nb0", neighborhood : "west", vidyo : false, size : 1 },
               { name : "Phone Room", id : "o2sggbafvejrl71pnjaqkofj2k", neighborhood : "east", vidyo : false, size : 1 },
               { name : "Conference", id : "v59uo85e5qvfo4jqsv4hm125ic", neighborhood : "central", vidyo : true, size : 6 }
             ].map(function(i) { i.freebusy = []; return i;});
 
-// util function to convert a Mozilla room id into a YVR
-// @mozilla email address.  Means less repeated info and perhaps less spam
+// util function to convert a Mozilla room id into a ICS File
 function atMozYVR(id) {
-  // return "yvr-" + id + "@chloi.io";
   return "chloi.io_"+ id + "%40group.calendar.google.com"
+}
+
+// WIP
+function findNextEvent() {
+
+  rooms.forEach(function (room) {
+    var url = format("https://www.google.com/calendar/ical/%s/public/basic.ics", atMozYVR(room.id));
+  
+    ical.fromURL(url, {}, function(err, data) {
+      for (var k in data) {
+        if (data.hasOwnProperty(k)) {
+          var ev = data[k];
+          console.log("Conference",
+            ev.summary,
+            'is in',
+            ev.location,
+            'on the', ev.start.getDate(), 'of');
+        }
+      }
+    });
+  });
 }
 
 function getFreeBusy() {
@@ -64,43 +83,45 @@ function getFreeBusy() {
 
   console.log("getFreeBusy", now.format('h:mma'));
 
+  var today = function (fb) {
+    // we only need the items that are within today's free/busy timeframe
+    return now.isSame(fb.start, 'day') || now.isSame(fb.end, 'day') ||
+           now.isAfter(fb.start) && now.isBefore(fb.end);
+  };
+
   rooms.forEach(function (room) {
 
     var url = format(ics, atMozYVR(room.id), now.format("YYYYMMDD"));
-    // var url = format(ics, now.format("YYYYMMDD"));
 
     ical.fromURL(url, {},
       function(err, data) {
-
         if (err) {
           console.error(err);
           return;
         }
 
-        var today = function (fb) {
-          // we only need the items that are within today's free/busy timeframe
-          return now.isSame(fb.start, 'day') || now.isSame(fb.end, 'day') ||
-                 now.isAfter(fb.start) && now.isBefore(fb.end);
-        };
+        var events = [];
 
         for (var k in data){
           if (data.hasOwnProperty(k)){
             
             var ev = data[k];
-            
-            // if (ev.type && ev.type === "VFREEBUSY" && typeof ev.freebusy !== "undefined" ) {
-
+                        
             if (ev.type && ev.type === "VFREEBUSY") {
               if (typeof ev.freebusy === "undefined") {
-                ev.freebusy = [{"start": ev.start, "end": ev.end}]
+
+                var start = moment.utc(ev.start);
+                var end = moment.utc(ev.end);
+                start.local();
+                end.local();
+
+                events.push({"start": start, "end": end});
+                events = events.filter(today);
               }
-              room.freebusy = ev.freebusy.filter(today);
-            } else {
-              room.freebusy = [];
             }
           }
         }
-
+        room.freebusy = events;
       }
     );
   });
@@ -108,6 +129,8 @@ function getFreeBusy() {
   // add CALENDAR_INTERVAL min or the remainder of CALENDAR_INTERVAL min
   now.add('minutes', (CALENDAR_INTERVAL - (now.minutes() % CALENDAR_INTERVAL)));
   console.log("next run", now.fromNow());
+
+  // findNextEvent();
 
   // run every CALENDAR_INTERVAL min on the CALENDAR_INTERVAL
   // use the diff against the current time for milliseconds
@@ -119,6 +142,7 @@ function getFreeBusy() {
 function busy(rs) {
   var now = moment();
   return rs.filter(function (room) {
+
     return room.freebusy && room.freebusy.some(function (fb) {
       var fuzzStart = moment(fb.start).subtract('minutes', BUSY_FUZZ);
       // console.log(room.name, "busy", fuzzStart.fromNow(), "and free again", moment(fb.end).fromNow());
