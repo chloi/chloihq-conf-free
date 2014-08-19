@@ -97,7 +97,7 @@
         var fb = fbs.find(function (fb) { return now.isBefore(fb.end); });
 
         if (ne) {
-          nextEvent = moment(ne).fromNow();
+          nextEvent = "Next event in " + moment(ne).fromNow(true);
         }
 
         if (fb) {
