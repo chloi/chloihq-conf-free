@@ -1,17 +1,28 @@
-yvr-conf-free
-=============
+[![Screenshot of the ChloiHQ conf free display.](preview.png)](https://github.com/chloi/yvr-conf-free)
 
-A node.js server that gathers the Mozilla YVR conference room FreeBusy information in an effort to display the conference rooms that are currently available for use. You can see a working example at:
+***
 
-* https://yvr-conf.paas.allizom.org/
+# yvr-conf-free
 
-Getting Started
-=============
+A Node.js server that gathers the [ChloiHQ](http://chloi.io) conference room FreeBusy information in an effort to display the conference rooms that are currently available for use. You can take a look at [MozillaYVR’s version]( https://yvr-conf.paas.allizom.org/) as an example.
 
-    npm start
+## Getting Started
 
-Endpoints and API
-=============
+```sh
+# Clone the repository
+https://github.com/chloi/yvr-conf-free
+
+# Move into the repo
+cd yvr-conf-free
+
+# Install dependencies
+npm install
+
+# Start the server
+npm start
+```
+
+## Endpoints and API
 
 * Main Widget
   * http://0.0.0.0:3002/
@@ -22,35 +33,55 @@ Endpoints and API
 * Only rooms currently free
   * http://0.0.0.0:3002/api/rooms/free
 
-( NOTE: currently busy and free also includes a 5 min start time 'fuzz' where a room will be included if it is about to become free or busy )
-
-Screenshot
-=============
-
-http://cl.ly/image/0C0k0x0Q2I2g
-
-YVR Supported Conference Rooms
-=============
+_**NOTE** Currently busy and free also includes a 5 min start time 'fuzz' where a room will be included if it is about to become free or busy_
 
 
-* Breakout : 47c1ujm18e0cov47bga56nksc4
-* Mini Conf : bbgd0aghsl8qah1eecl3qn44js
-* Pairing : 0uqvn3kbbqhgltfajgiouj4nb0
-* Phone Room : o2sggbafvejrl71pnjaqkofj2k
-* Conference : v59uo85e5qvfo4jqsv4hm125ic
+## ChloiHQ Supported Conference Rooms
 
 
-Booking Events
+* Breakout: `47c1ujm18e0cov47bga56nksc4`
+* Mini Conf: `bbgd0aghsl8qah1eecl3qn44js`
+* Pairing: `0uqvn3kbbqhgltfajgiouj4nb0`
+* Phone Room: `o2sggbafvejrl71pnjaqkofj2k`
+* Conference: `v59uo85e5qvfo4jqsv4hm125ic`
 
-    Breakout: https://www.google.com/calendar/ical/chloi.io_47c1ujm18e0cov47bga56nksc4%40group.calendar.google.com/public/basic.ics
-    Mini Conf: https://www.google.com/calendar/ical/chloi.io_bbgd0aghsl8qah1eecl3qn44js%40group.calendar.google.com/public/basic.ics
-    Pairing: https://www.google.com/calendar/ical/chloi.io_0uqvn3kbbqhgltfajgiouj4nb0%40group.calendar.google.com/public/basic.ics
-    Phone Room: https://www.google.com/calendar/ical/chloi.io_o2sggbafvejrl71pnjaqkofj2k%40group.calendar.google.com/public/basic.ics
-    Conference: https://www.google.com/calendar/ical/chloi.io_v59uo85e5qvfo4jqsv4hm125ic%40group.calendar.google.com/public/basic.ics
+
+### Booking Events
+
+_Breakout_
+
+```
+https://www.google.com/calendar/ical/chloi.io_47c1ujm18e0cov47bga56nksc4%40group.calendar.google.com/public/basic.ics
+```
+
+_Mini Conf_
+
+```
+https://www.google.com/calendar/ical/chloi.io_bbgd0aghsl8qah1eecl3qn44js%40group.calendar.google.com/public/basic.ics
+```
+
+_Pairing_
+
+```
+https://www.google.com/calendar/ical/chloi.io_0uqvn3kbbqhgltfajgiouj4nb0%40group.calendar.google.com/public/basic.ics
+```
+
+_Phone Room_
+
+```
+https://www.google.com/calendar/ical/chloi.io_o2sggbafvejrl71pnjaqkofj2k%40group.calendar.google.com/public/basic.ics
+```
+
+_Conference_
+
+```
+https://www.google.com/calendar/ical/chloi.io_v59uo85e5qvfo4jqsv4hm125ic%40group.calendar.google.com/public/basic.ics
+```
+
 
 Where `$EMAIL` = conf room email AND `$DATE` = moment.format("YYYYMMDD")
 
-
+<!--
 Deployment at Mozilla YVR
 =============
 
@@ -66,3 +97,4 @@ With access (and the stackato client), run the following commands to login and j
 ```
 
 From this point, you can deploy normally :)
+-->
