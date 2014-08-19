@@ -199,6 +199,17 @@ svg {
   height: 0.5em;
 }
 
+.fb {
+  font-weight: 400;
+}
+
+.fb-qual {
+}
+
+.fb-when {
+
+}
+
 .img-center {
   width: 100%;
   max-width: 300px;
