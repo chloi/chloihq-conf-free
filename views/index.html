@@ -96,10 +96,6 @@
         var text = "", when = "", nextEvent = "";
         var fb = fbs.find(function (fb) { return now.isBefore(fb.end); });
 
-        if (ne) {
-          nextEvent = "Next event in " + moment(ne).fromNow(true);
-        }
-
         if (fb) {
           willBeBusy = (now.isBefore(fb.end));
           isBusy = (now.isAfter(fb.start) && willBeBusy);
@@ -119,8 +115,8 @@
         } else {
           isBusy = false
           if (ne) {
-            text = "free for ";
-            when = moment(ne).fromNow();
+            text = "next booked in ";
+            when = moment(ne).fromNow(true);
           }
         }
 
