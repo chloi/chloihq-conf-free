@@ -114,10 +114,14 @@
             text = "booked";
             when = (moreThanOneHour) ? moment(fb.start).format('h:mma') : moment(fb.start).fromNow();
           }
-          text += (moreThanOneHour) ? " at" : " in";
+          text += (moreThanOneHour) ? " at " : " in ";
 
         } else {
           isBusy = false
+          if (ne) {
+            text = "free for ";
+            when = moment(ne).fromNow();
+          }
         }
 
 
@@ -166,9 +170,8 @@
               <span className="oi oi-check" title="check" aria-hidden="true"></span>
             </div>
             <div className="fb">
-              <div>{freebusy.text}</div>
-              <div>{freebusy.when}</div>
-              <div>{freebusy.next}</div>
+              <span className="fb-qual">{freebusy.text}</span>
+              <span className="fb-when">{freebusy.when}</span>
               <div className="attrs">
                 <Friends size={this.props.room.size} />
                 <span className={(this.props.room.vidyo) ? 'pull-left oi oi-video' : ''} ></span>
