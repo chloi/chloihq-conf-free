@@ -48,12 +48,6 @@ _**NOTE** Currently busy and free also includes a 5 min start time 'fuzz' where 
 
 ### Booking Events
 
-_Breakout_
-
-```
-https://www.google.com/calendar/ical/chloi.io_47c1ujm18e0cov47bga56nksc4%40group.calendar.google.com/public/basic.ics
-```
-
 _Mini Conf_
 
 ```
