@@ -2,9 +2,9 @@
 
 ***
 
-# yvr-conf-free
+# ChloiHQ Conf Free
 
-A Node.js server that gathers the [ChloiHQ](http://chloi.io) conference room FreeBusy information in an effort to display the conference rooms that are currently available for use. You can take a look at [MozillaYVR’s version]( https://yvr-conf.paas.allizom.org/) as an example.
+A dashboard that displays the conference bookings and availability at [ChloiHQ](http://chloi.io). This is done through multiple Google Calendars and is based upon [MozillaYVR’s version](https://yvr-conf.paas.allizom.org/).
 
 ## Getting Started
 
@@ -35,16 +35,12 @@ npm start
 
 _**NOTE** Currently busy and free also includes a 5 min start time 'fuzz' where a room will be included if it is about to become free or busy_
 
-
 ## ChloiHQ Supported Conference Rooms
 
-
-* Breakout: `47c1ujm18e0cov47bga56nksc4`
 * Mini Conf: `bbgd0aghsl8qah1eecl3qn44js`
 * Pairing: `0uqvn3kbbqhgltfajgiouj4nb0`
 * Phone Room: `o2sggbafvejrl71pnjaqkofj2k`
 * Conference: `v59uo85e5qvfo4jqsv4hm125ic`
-
 
 ### Booking Events
 
@@ -71,7 +67,6 @@ _Conference_
 ```
 https://www.google.com/calendar/ical/chloi.io_v59uo85e5qvfo4jqsv4hm125ic%40group.calendar.google.com/public/basic.ics
 ```
-
 
 Where `$EMAIL` = conf room email AND `$DATE` = moment.format("YYYYMMDD")
 
