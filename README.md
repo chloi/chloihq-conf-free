@@ -4,7 +4,7 @@
 
 # ChloiHQ Conf Free
 
-A dashboard that displays the conference bookings and availability at [ChloiHQ](http://chloi.io). This is done through multiple Google Calendars and is based upon [MozillaYVR’s version](https://yvr-conf.paas.allizom.org/).
+Visualizes conference room availability at [ChloiHQ](http://chloi.io). This is done through multiple Google Calendars and is based upon [MozillaYVR’s version](https://yvr-conf.paas.allizom.org/).
 
 ## Getting Started
 

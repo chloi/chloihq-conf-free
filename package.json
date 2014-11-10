@@ -7,7 +7,7 @@
     "Rob Ellis <rob@chloi.io>",
     "Kenneth Ormandy <kenneth@chloi.io>"
   ],
-  "description": "A dashboard that displays the conference bookings and availability at ChloiHQ",
+  "description": "Visualizes conference room availability at ChloiHQ.",
   "scripts": {
     "start": "node server.js"
   },
