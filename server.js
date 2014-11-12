@@ -201,7 +201,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/js/moment.js', function (req,res) {
-  res.sendfile(path.join(__dirname,'node_modules','moment','moment.js'));
+  res.sendFile(path.join(__dirname,'node_modules','moment','moment.js'));
 });
 
 var server = app.listen(Number(process.env.PORT || 5000), function() {
