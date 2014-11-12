@@ -63,7 +63,7 @@ function findNextEvent() {
 
   rooms.forEach(function (room) {
     var url = format("https://www.google.com/calendar/ical/%s/public/basic.ics", atMozYVR(room.id));
-  
+
     ical.fromURL(url, {}, function(err, data) {
       var d = [];
       for (var k in data) {
@@ -109,9 +109,9 @@ function getFreeBusy() {
 
         for (var k in data){
           if (data.hasOwnProperty(k)){
-            
+
             var ev = data[k];
-                        
+
             if (ev.type && ev.type === "VFREEBUSY") {
               if (typeof ev.freebusy === "undefined") {
 
