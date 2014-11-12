@@ -10,16 +10,19 @@ Visualizes conference room availability at [ChloiHQ](http://chloi.io). This is d
 
 ```sh
 # Clone the repository
-https://github.com/chloi/yvr-conf-free
+https://github.com/chloi/chloihq-conf-free
 
 # Move into the repo
-cd yvr-conf-free
+cd chloihq-conf-free
 
 # Install dependencies
 npm install
 
 # Start the server
 npm start
+
+# View the dashboard in your browser
+open http://localhost:5000
 ```
 
 ## Endpoints and API
