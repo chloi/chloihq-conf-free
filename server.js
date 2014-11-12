@@ -21,7 +21,7 @@ var CALENDAR_INTERVAL = 5; // in minutes
 
 var BUSY_FUZZ = 15;
 
-moment.lang('en', {
+moment.locale('en', {
     relativeTime : {
         future: "in %s",
         past:   "%s ago",
@@ -132,7 +132,7 @@ function getFreeBusy() {
   });
 
   // add CALENDAR_INTERVAL min or the remainder of CALENDAR_INTERVAL min
-  now.add('minutes', (CALENDAR_INTERVAL - (now.minutes() % CALENDAR_INTERVAL)));
+  now.add((CALENDAR_INTERVAL - (now.minutes() % CALENDAR_INTERVAL)), 'minutes');
   console.log("next run", now.fromNow());
 
   findNextEvent();
